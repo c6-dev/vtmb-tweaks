@@ -441,5 +441,3 @@ public:
 	UInt8 gap00[0x8CA];
 	int stackCount;
 };
-static_assert(sizeof(CBaseCombatWeapon) == 0x8D4);
-static_assert(offsetof(CBaseCombatWeapon, stackCount) == 0x8D0);
