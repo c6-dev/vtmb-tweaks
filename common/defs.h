@@ -59,12 +59,18 @@ void WriteRelJump(UInt32 jumpSrc, UInt32 jumpTgt)
 	SafeWrite32(jumpSrc + 1, jumpTgt - jumpSrc - 1 - 4);
 }
 
+void SafeWriteBuf(UInt32 addr, void* data, UInt32 len)
+{
+	UInt32    oldProtect;
 
+	VirtualProtect((void*)addr, len, PAGE_EXECUTE_READWRITE, &oldProtect);
+	memcpy((void*)addr, data, len);
+	VirtualProtect((void*)addr, len, oldProtect, &oldProtect);
+}
 class CBaseCombatWeapon {
 public:
 	CBaseCombatWeapon();
 	~CBaseCombatWeapon();
-	// define 371 virtual function looking like virtual void Unk01()
 	virtual void Unk01();
 	virtual void Unk02();
 	virtual void Unk03();

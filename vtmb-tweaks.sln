@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "npcs_drop_all_weapons", "np
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stackable_weapons", "stackable_weapons\stackable_weapons.vcxproj", "{21B73DF7-32D6-40AF-9888-14D13F360710}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "non_solid_ragdolls", "non_solid_ragdolls\non_solid_ragdolls.vcxproj", "{7980E0E3-6C04-4C1D-AE61-96F3F0033C5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -33,6 +35,10 @@ Global
 		{21B73DF7-32D6-40AF-9888-14D13F360710}.Debug|x86.Build.0 = Debug|Win32
 		{21B73DF7-32D6-40AF-9888-14D13F360710}.Release|x86.ActiveCfg = Release|Win32
 		{21B73DF7-32D6-40AF-9888-14D13F360710}.Release|x86.Build.0 = Release|Win32
+		{7980E0E3-6C04-4C1D-AE61-96F3F0033C5D}.Debug|x86.ActiveCfg = Debug|Win32
+		{7980E0E3-6C04-4C1D-AE61-96F3F0033C5D}.Debug|x86.Build.0 = Debug|Win32
+		{7980E0E3-6C04-4C1D-AE61-96F3F0033C5D}.Release|x86.ActiveCfg = Release|Win32
+		{7980E0E3-6C04-4C1D-AE61-96F3F0033C5D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
