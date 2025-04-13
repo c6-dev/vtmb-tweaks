@@ -1,5 +1,5 @@
 #include "no_corpse_despawn.h"
-#include "safe_write.h"
+#include "safewrite.h"
 extern UInt32 vampire_base;
 
 void no_corpse_despawn::InitVampireHooks()

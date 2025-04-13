@@ -102,7 +102,7 @@
     <ClCompile Include="modules\no_tracers.cpp" />
     <ClCompile Include="modules\npcs_drop_all_weapons.cpp" />
     <ClCompile Include="modules\stackable_weapons.cpp" />
-    <ClCompile Include="util\safe_write.cpp" />
+    <ClCompile Include="util\safewrite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defs\defs.h" />
@@ -113,7 +113,7 @@
     <ClInclude Include="modules\npcs_drop_all_weapons.h" />
     <ClInclude Include="modules\stackable_weapons.h" />
     <ClInclude Include="util\calls.h" />
-    <ClInclude Include="util\safe_write.h" />
+    <ClInclude Include="util\safewrite.h" />
     <ClInclude Include="util\types.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

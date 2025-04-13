@@ -1,5 +1,5 @@
 #include "no_tracers.h"
-#include "safe_write.h"
+#include "safewrite.h"
 extern UInt32 vampire_base;
 
 void no_tracers::InitVampireHooks()

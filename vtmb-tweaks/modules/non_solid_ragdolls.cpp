@@ -1,5 +1,6 @@
 #include "non_solid_ragdolls.h"
-#include "safe_write.h"
+#include "safewrite.h"
+#include "types.h"
 extern UInt32 vampire_base;
 
 void non_solid_ragdolls::InitVampireHooks()

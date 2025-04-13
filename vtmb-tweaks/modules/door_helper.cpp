@@ -1,7 +1,7 @@
 #include "door_helper.h"
 #include "calls.h"
 #include "defs.h"
-#include "safe_write.h"
+#include "safewrite.h"
 extern UInt32 vampire_base;
 
 namespace {

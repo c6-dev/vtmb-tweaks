@@ -1,5 +1,5 @@
 #include "npcs_drop_all_weapons.h"
-#include "safe_write.h"
+#include "safewrite.h"
 #include "calls.h"
 #include "defs.h"
 extern UInt32 vampire_base;
