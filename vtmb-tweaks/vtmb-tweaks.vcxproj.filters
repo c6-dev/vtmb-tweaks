@@ -69,5 +69,8 @@
     <ClInclude Include="util\SimpleIni.h">
       <Filter>util</Filter>
     </ClInclude>
+    <ClInclude Include="util\logging.h">
+      <Filter>util</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

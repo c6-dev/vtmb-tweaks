@@ -119,6 +119,7 @@
     <ClInclude Include="modules\npcs_drop_all_weapons.h" />
     <ClInclude Include="modules\stackable_weapons.h" />
     <ClInclude Include="util\calls.h" />
+    <ClInclude Include="util\logging.h" />
     <ClInclude Include="util\safewrite.h" />
     <ClInclude Include="util\SimpleIni.h" />
     <ClInclude Include="util\types.h" />

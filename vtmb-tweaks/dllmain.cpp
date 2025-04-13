@@ -10,6 +10,7 @@
 #include "stackable_weapons.h"
 
 #include "SimpleIni.h"
+#include "logging.h"
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
 {
@@ -18,6 +19,8 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 
 UInt32 vampire_base = 0;
 CSimpleIniA ini;
+std::ofstream Log::LOG("vtmb-tweaks.log");
+float tweaks_version = 0.9f;
 
 extern "C" __declspec(dllexport) void loaded_vampire()
 {
@@ -45,6 +48,9 @@ extern "C" __declspec(dllexport) void loaded_vampire()
 
 		door_helper::bFixDoorsAtHighFPS = ini.GetBoolValue("MAIN", "bFixDoorsAtHighFPS");
 		door_helper::bNoDoorAutoclose = ini.GetBoolValue("MAIN", "bNoDoorAutoClose");
-		door_helper::InitVampireHooks();	
+		door_helper::InitVampireHooks();
+
+		Log() << "vtmb-tweaks loaded.";
+		Log() << "vtmb-tweaks version: " << tweaks_version;
 	}
 }
