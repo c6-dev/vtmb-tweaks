@@ -67,6 +67,33 @@ void SafeWriteBuf(UInt32 addr, void* data, UInt32 len)
 	memcpy((void*)addr, data, len);
 	VirtualProtect((void*)addr, len, oldProtect, &oldProtect);
 }
+
+class CGlobalVarsBase {
+public:
+	float realtime;
+	int framecount;
+	float absoluteframetime;
+	float curtime;
+	float frametime;
+	int maxClients;
+	int tickcount;
+	float tick_interval;
+	void* saveData;
+};
+
+class CGlobalVars : public CGlobalVarsBase
+{
+public:
+	const char* mapname;
+	int mapversion;
+	const char* startspot;
+	bool deathmatch;
+	bool coop;
+	bool teamplay;
+	int cdAudioTrack;
+	int maxEntities;
+
+};
 class CBaseCombatWeapon {
 public:
 	CBaseCombatWeapon();
