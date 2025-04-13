@@ -8,4 +8,6 @@ Various small engine-level tweaks for Vampire the Masquerade Bloodlines. All fea
 * bFixDoorsAtHighFPS - fixes the player getting stuck inside doors when playing at high framerate. Credits to funkkiy for the [original fix](https://github.com/funkkiy/BloodlinesPatch).
 * bNoDoorAutoClose - Makes doors stay open instead of automatically closing after a few seconds.
   
-Loader.exe is required (included with all versions of Unofficial Patch and major mods). To install, place vtmb-tweaks.vtm and vtmb-tweaks.ini into Bin/loader.
+Loader.exe is required (included with all versions of Unofficial Patch and major mods).  
+
+To install, place vtmb-tweaks.vtm and vtmb-tweaks.ini into Bin/loader.
