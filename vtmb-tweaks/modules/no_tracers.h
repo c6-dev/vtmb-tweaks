@@ -1,5 +1,5 @@
 #pragma once
 namespace no_tracers
 {
-	void InitVampireHooks();
+	void InitClientHooks();
 } // namespace no_tracers
