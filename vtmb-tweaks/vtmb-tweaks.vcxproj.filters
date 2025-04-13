@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="safe_write.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="door_helper.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="no_corpse_despawn.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="no_tracers.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="non_solid_ragdolls.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="npcs_drop_all_weapons.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="stackable_weapons.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="util">
+      <UniqueIdentifier>{c3a94d06-22d7-42ee-beef-11a978868fbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="defs">
+      <UniqueIdentifier>{5db00a2c-7232-4169-8657-dbaac8c8f77f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules">
+      <UniqueIdentifier>{217833ee-df9e-44e9-a8dd-8d9cfe331353}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="calls.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="safe_write.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="defs.h">
+      <Filter>defs</Filter>
+    </ClInclude>
+    <ClInclude Include="door_helper.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="no_corpse_despawn.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="no_tracers.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="non_solid_ragdolls.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="npcs_drop_all_weapons.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="stackable_weapons.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>util</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
