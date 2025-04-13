@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="safe_write.cpp">
+    <ClCompile Include="util\safe_write.cpp">
       <Filter>util</Filter>
     </ClCompile>
-    <ClCompile Include="door_helper.cpp">
+    <ClCompile Include="modules\door_helper.cpp">
       <Filter>modules</Filter>
     </ClCompile>
-    <ClCompile Include="no_corpse_despawn.cpp">
+    <ClCompile Include="modules\no_corpse_despawn.cpp">
       <Filter>modules</Filter>
     </ClCompile>
-    <ClCompile Include="no_tracers.cpp">
+    <ClCompile Include="modules\no_tracers.cpp">
       <Filter>modules</Filter>
     </ClCompile>
-    <ClCompile Include="non_solid_ragdolls.cpp">
+    <ClCompile Include="modules\non_solid_ragdolls.cpp">
       <Filter>modules</Filter>
     </ClCompile>
-    <ClCompile Include="npcs_drop_all_weapons.cpp">
+    <ClCompile Include="modules\npcs_drop_all_weapons.cpp">
       <Filter>modules</Filter>
     </ClCompile>
-    <ClCompile Include="stackable_weapons.cpp">
+    <ClCompile Include="modules\stackable_weapons.cpp">
       <Filter>modules</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,35 +36,35 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="calls.h">
-      <Filter>util</Filter>
-    </ClInclude>
-    <ClInclude Include="safe_write.h">
-      <Filter>util</Filter>
-    </ClInclude>
-    <ClInclude Include="defs.h">
+    <ClInclude Include="defs\defs.h">
       <Filter>defs</Filter>
     </ClInclude>
-    <ClInclude Include="door_helper.h">
-      <Filter>modules</Filter>
-    </ClInclude>
-    <ClInclude Include="no_corpse_despawn.h">
-      <Filter>modules</Filter>
-    </ClInclude>
-    <ClInclude Include="no_tracers.h">
-      <Filter>modules</Filter>
-    </ClInclude>
-    <ClInclude Include="non_solid_ragdolls.h">
-      <Filter>modules</Filter>
-    </ClInclude>
-    <ClInclude Include="npcs_drop_all_weapons.h">
-      <Filter>modules</Filter>
-    </ClInclude>
-    <ClInclude Include="stackable_weapons.h">
-      <Filter>modules</Filter>
-    </ClInclude>
-    <ClInclude Include="types.h">
+    <ClInclude Include="util\calls.h">
       <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\safe_write.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\types.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\door_helper.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\no_corpse_despawn.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\no_tracers.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\non_solid_ragdolls.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\npcs_drop_all_weapons.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\stackable_weapons.h">
+      <Filter>modules</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
