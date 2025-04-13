@@ -66,5 +66,8 @@
     <ClInclude Include="modules\stackable_weapons.h">
       <Filter>modules</Filter>
     </ClInclude>
+    <ClInclude Include="util\SimpleIni.h">
+      <Filter>util</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

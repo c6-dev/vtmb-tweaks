@@ -23,15 +23,15 @@ namespace {
 			test al, al
 			jz DROPONE
 			mov eax, dword ptr ds : [edi]
-				mov ecx, edi
-					call dword ptr ds : [eax + 0x608]
-					mov eax, vampire_base
-					add eax, 0x32D14C
-					jmp eax
-					DROPONE :
-				mov eax, vampire_base
-					add eax, 0x32D16F
-					jmp eax
+			mov ecx, edi
+			call dword ptr ds : [eax + 0x608]
+			mov eax, vampire_base
+			add eax, 0x32D14C
+			jmp eax
+		DROPONE :
+			mov eax, vampire_base
+			add eax, 0x32D16F
+			jmp eax
 		}
 	}
 
@@ -44,11 +44,23 @@ namespace {
 		}
 		return true;
 	}
+
+	// if player is about to pick up a stackable weapon, return nullptr as if he doesn't own it to allow picking up
+	CBaseCombatWeapon* __fastcall PickUpStackableHook(void* player, void* edx, char* weaponType, int a2)
+	{
+		CBaseCombatWeapon* weapon = ThisCall<CBaseCombatWeapon*>(vampire_base + 0x151B8, player, weaponType, a2); // OwnsThisType
+		if (weapon != nullptr && weapon->IsStackable())
+		{
+			return nullptr;
+		}
+		return weapon;
+	}
+
 }
 
 void stackable_weapons::InitVampireHooks()
 {
 	WriteRelJump(vampire_base + 0x32D142, (UInt32)DropStackableActiveWeaponHook);
 	WriteRelCall(vampire_base + 0x17788C, (UInt32)SwitchToNextBestWeaponHook);
-	SafeWrite8(vampire_base + 0x177227, 0xEB);
+	WriteRelCall(vampire_base + 0x17724E, (UInt32)PickUpStackableHook);
 }

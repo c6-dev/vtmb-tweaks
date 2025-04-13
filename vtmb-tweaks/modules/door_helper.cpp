@@ -23,7 +23,11 @@ namespace {
 
 void door_helper::InitVampireHooks()
 {
-	SafeWriteBuf(vampire_base + 0xF3A66, (void*)"\xB9\x02\x00\x00\x00\x90\x90", 7);
-	WriteRelJump(vampire_base + 0xDAB2, (UInt32)AngularMoveHook);
-	SafeWriteBuf(vampire_base + 0xF08B6, (void*)"\x6A\x00\x90\x90\x90", 5); // stops doors from auto-closing
+	if (bFixDoorsAtHighFPS) {
+		SafeWriteBuf(vampire_base + 0xF3A66, (void*)"\xB9\x02\x00\x00\x00\x90\x90", 7);
+		WriteRelJump(vampire_base + 0xDAB2, (UInt32)AngularMoveHook);
+	}
+	if (bNoDoorAutoclose) {
+		SafeWriteBuf(vampire_base + 0xF08B6, (void*)"\x6A\x00\x90\x90\x90", 5);
+	}
 }

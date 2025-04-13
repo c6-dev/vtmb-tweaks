@@ -7,6 +7,9 @@
 #include "no_tracers.h"
 #include "non_solid_ragdolls.h"
 #include "npcs_drop_all_weapons.h"
+#include "stackable_weapons.h"
+
+#include "SimpleIni.h"
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
 {
@@ -14,6 +17,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 }
 
 UInt32 vampire_base = 0;
+CSimpleIniA ini;
 
 extern "C" __declspec(dllexport) void loaded_vampire()
 {
@@ -21,10 +25,26 @@ extern "C" __declspec(dllexport) void loaded_vampire()
 	if (vampire != NULL)
 	{
 		vampire_base = (UInt32)vampire;
-		no_corpse_despawn::InitVampireHooks();
-		no_tracers::InitVampireHooks();
-		npcs_drop_all_weapons::InitVampireHooks();
-		non_solid_ragdolls::InitVampireHooks();
+		ini.SetUnicode();
+		ini.LoadFile("Bin\\loader\\vtmb-tweaks.ini");
+
+		bool bNoCorpseDespawn = ini.GetBoolValue("MAIN", "bNoCorpseDespawn");
+		if (bNoCorpseDespawn) no_corpse_despawn::InitVampireHooks();
+
+		bool bNoTracers = ini.GetBoolValue("MAIN", "bNoTracers");
+		if (bNoTracers)	no_tracers::InitVampireHooks();
+
+		bool bNPCsDropAllWeapons = ini.GetBoolValue("MAIN", "bNPCsDropAllWeapons");
+		if (bNPCsDropAllWeapons) npcs_drop_all_weapons::InitVampireHooks();
+
+		bool bNonSolidRagdolls = ini.GetBoolValue("MAIN", "bNonSolidRagdolls");
+		if (bNonSolidRagdolls) non_solid_ragdolls::InitVampireHooks();
+
+		bool bStackableWeapons = ini.GetBoolValue("MAIN", "bStackableWeapons");
+		if (bStackableWeapons) stackable_weapons::InitVampireHooks();
+
+		door_helper::bFixDoorsAtHighFPS = ini.GetBoolValue("MAIN", "bFixDoorsAtHighFPS");
+		door_helper::bNoDoorAutoclose = ini.GetBoolValue("MAIN", "bNoDoorAutoClose");
 		door_helper::InitVampireHooks();	
 	}
 }
