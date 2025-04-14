@@ -26,8 +26,9 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 		ini.SetUnicode();
 		ini.LoadFile("Bin\\loader\\vtmb-tweaks.ini");
 		Log() << "Loading vtmb-tweaks, version: " << tweaks_version;
-		return TRUE;
 	}
+
+	return TRUE;
 	
 }
 
