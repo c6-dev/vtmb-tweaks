@@ -11,3 +11,5 @@ Various small engine-level tweaks for Vampire the Masquerade Bloodlines. All fea
 Loader.exe is required (included with all versions of Unofficial Patch and major mods).  
 
 To install, place vtmb-tweaks.vtm and vtmb-tweaks.ini into Bin/loader.
+
+Built using Visual Studio 2022 and v141_xp toolset.
