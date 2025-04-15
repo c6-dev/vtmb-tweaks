@@ -28,6 +28,6 @@ void door_helper::InitVampireHooks()
 		WriteRelJump(vampire_base + 0xDAB2, (UInt32)AngularMoveHook);
 	}
 	if (bNoDoorAutoclose) {
-		SafeWriteBuf(vampire_base + 0xF08B6, (void*)"\x6A\x00\x90\x90\x90", 5);
+	//	SafeWriteBuf(vampire_base + 0xF08B6, (void*)"\x6A\x00\x90\x90\x90", 5); // FIXME breaks OnFullyClosed triggers
 	}
 }
