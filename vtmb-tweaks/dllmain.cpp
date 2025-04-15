@@ -16,7 +16,7 @@ UInt32 vampire_base = 0;
 UInt32 client_base = 0;
 CSimpleIniA ini;
 std::ofstream Log::LOG("vtmb-tweaks.log");
-float tweaks_version = 0.9f;
+float tweaks_version = 0.95f;
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
 {

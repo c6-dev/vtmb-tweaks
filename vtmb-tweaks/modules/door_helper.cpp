@@ -19,6 +19,37 @@ namespace {
 		}
 		ThisCall(vampire_base + 0x1C17E0, a1, a2, flSpeed);
 	}
+
+	bool __fastcall ShouldGoDown(CBaseToggle* door)
+	{
+		if (*(UInt32*)door == vampire_base + 0x454B94) { // CRotDoor only
+			UInt32* g_pEntityList = *(UInt32**)(vampire_base + 0x566458);
+			CBaseEntity* activator = ThisCall<CBaseEntity*>(vampire_base + 0x9C8C, g_pEntityList, &door->m_hActivator); // CBaseEntityList::LookupEntity
+			if (!activator || !activator->IsPlayer()) // skip doors activated by player
+			{
+				return true;
+			}
+			return false;
+		}
+		return true;
+	}
+	__declspec(naked) void RotDoorGoDownHook()
+	{
+		__asm
+		{
+			mov ecx, esi
+			call ShouldGoDown
+			test al, al
+			jz DONE
+			mov eax, dword ptr ds:[esi]
+			push 0x1
+			mov ecx, esi
+			call dword ptr ds: [eax+0x3D0]
+			DONE:
+			pop esi
+			retn
+		}
+	}
 }
 
 void door_helper::InitVampireHooks()
@@ -28,6 +59,6 @@ void door_helper::InitVampireHooks()
 		WriteRelJump(vampire_base + 0xDAB2, (UInt32)AngularMoveHook);
 	}
 	if (bNoDoorAutoclose) {
-	//	SafeWriteBuf(vampire_base + 0xF08B6, (void*)"\x6A\x00\x90\x90\x90", 5); // FIXME breaks OnFullyClosed triggers
+		WriteRelJump(vampire_base + 0xF09EB, (UInt32)RotDoorGoDownHook);
 	}
 }
