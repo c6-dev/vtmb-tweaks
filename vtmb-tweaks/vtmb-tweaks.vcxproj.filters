@@ -23,6 +23,9 @@
     <ClCompile Include="modules\stackable_weapons.cpp">
       <Filter>modules</Filter>
     </ClCompile>
+    <ClCompile Include="alt_f4_support.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="util">
@@ -71,6 +74,9 @@
     </ClInclude>
     <ClInclude Include="util\logging.h">
       <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="alt_f4_support.h">
+      <Filter>modules</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

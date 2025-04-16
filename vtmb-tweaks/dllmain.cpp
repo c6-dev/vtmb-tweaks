@@ -1,6 +1,7 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
+#include "alt_f4_support.h"
 #include "types.h"
 #include "door_helper.h" 
 #include "no_corpse_despawn.h"
@@ -14,6 +15,8 @@
 
 UInt32 vampire_base = 0;
 UInt32 client_base = 0;
+UInt32 engine_base = 0;
+
 CSimpleIniA ini;
 std::ofstream Log::LOG;
 float tweaks_version = 0.95f;
@@ -71,5 +74,18 @@ extern "C" __declspec(dllexport) void loaded_client()
 		if (bNoTracers)	no_tracers::InitClientHooks();
 		Log() << "client.dll patches loaded.";
 		
+	}
+}
+
+extern "C" __declspec(dllexport) void loaded_engine()
+{
+	HMODULE engine = GetModuleHandleA("engine.dll");
+	if (engine != NULL)
+	{
+		engine_base = (UInt32)engine;
+		bool bEnableAltF4 = ini.GetBoolValue("MAIN", "bEnableAltF4");
+		if (bEnableAltF4) alt_f4_support::InitEngineHooks();
+		Log() << "engine.dll patches loaded.";
+
 	}
 }
