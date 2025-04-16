@@ -6,7 +6,8 @@ Various small engine-level tweaks for Vampire the Masquerade Bloodlines. All fea
 * bNPCsDropAllWeapons - makes NPCs drop all weapons on death instead of only the last one used.
 * bNonSolidRagdolls - sets CRagdollProp ragdolls as non-solid (debris collision group) to fix some cutscene bugs.
 * bFixDoorsAtHighFPS - fixes the player getting stuck inside doors when playing at high framerate. Credits to funkkiy for the [original fix](https://github.com/funkkiy/BloodlinesPatch).
-* bNoDoorAutoClose - Makes doors stay open instead of automatically closing after a few seconds.
+* bNoDoorAutoClose - Makes doors opened by the player stay open instead of automatically closing after a few seconds.
+* bEnableAltF4 - makes pressing Alt+F4 immediately close the game. 
   
 Loader.exe is required (included with all versions of Unofficial Patch and major mods).  
 
