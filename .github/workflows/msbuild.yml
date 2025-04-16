@@ -16,10 +16,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v2
-      with:
-        vs-version: '[15.0,16.0)' # VS2017
+    - name: Manually add VS2017 MSBuild to PATH
+      shell: pwsh
+      run: |
+        $vs2017Path = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise"
+        echo "$vs2017Path\MSBuild\15.0\Bin" | Out-File -Append -Encoding ascii $env:GITHUB_PATH
 
     - name: Build Release
       working-directory: ${{env.GITHUB_WORKSPACE}}
