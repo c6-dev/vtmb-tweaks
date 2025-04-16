@@ -78,15 +78,15 @@ jobs:
         draft: false
         prerelease: true
         body: |
-          Continuous release generated from the latest push to the repo.
+          Continuous release generated from the latest push to the repo. Use a regular release unless troubleshooting issues or testing new functionality.
     - name: Upload Artifact (Release)
       uses: actions/upload-release-asset@v1
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: artifacts/VMTBTweaks-Release-${{ env.artifact_timestamp }}.zip
-        asset_name: VMTBTweaks-Release-${{ env.artifact_timestamp }}.zip
+        asset_path: artifacts/VTMBTweaks-Release-${{ env.artifact_timestamp }}.zip
+        asset_name: VTMBTweaks-Release-${{ env.artifact_timestamp }}.zip
         asset_content_type: application/zip
     - name: Upload Artifact (Debug)
       uses: actions/upload-release-asset@v1
@@ -94,6 +94,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: artifacts/VMTBTweaks-Debug-${{ env.artifact_timestamp }}.zip
-        asset_name: VMTBTweaks-Debug-${{ env.artifact_timestamp }}.zip
+        asset_path: artifacts/VTMBTweaks-Debug-${{ env.artifact_timestamp }}.zip
+        asset_name: VTMBTweaks-Debug-${{ env.artifact_timestamp }}.zip
         asset_content_type: application/zip
