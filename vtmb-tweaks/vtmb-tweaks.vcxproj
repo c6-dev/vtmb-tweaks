@@ -101,8 +101,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="alt_f4_support.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="modules\alt_f4_support.cpp" />
     <ClCompile Include="modules\door_helper.cpp" />
     <ClCompile Include="modules\non_solid_ragdolls.cpp" />
     <ClCompile Include="modules\no_corpse_despawn.cpp" />
@@ -112,8 +112,8 @@
     <ClCompile Include="util\safewrite.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="alt_f4_support.h" />
     <ClInclude Include="defs\defs.h" />
+    <ClInclude Include="modules\alt_f4_support.h" />
     <ClInclude Include="modules\door_helper.h" />
     <ClInclude Include="modules\non_solid_ragdolls.h" />
     <ClInclude Include="modules\no_corpse_despawn.h" />
