@@ -11,21 +11,23 @@ permissions: write-all
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2019
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Add MSBuild to PATH
+    - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
+      with:
+        vs-version: '[15.0,16.0)' # VS2017
 
     - name: Build Release
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild /m /p:Configuration=Release ${{env.SOLUTION_FILE_PATH}} /p:PostBuildEventUseInBuild=false
+      run: msbuild /m /p:Configuration=Release /p:PlatformToolset=vc141_xp ${{env.SOLUTION_FILE_PATH}} /p:PostBuildEventUseInBuild=false
 
     - name: Build Debug
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild /m /p:Configuration=Debug ${{env.SOLUTION_FILE_PATH}} /p:PostBuildEventUseInBuild=false
+      run: msbuild /m /p:Configuration=Debug /p:PlatformToolset=vc141_xp ${{env.SOLUTION_FILE_PATH}} /p:PostBuildEventUseInBuild=false
 
     - name: Generate Timestamp
       run: |
