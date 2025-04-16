@@ -27,11 +27,11 @@ jobs:
 
     - name: Build Release
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild /m /p:Configuration=Release /p:PlatformToolset=vc141_xp ${{env.SOLUTION_FILE_PATH}} /p:PostBuildEventUseInBuild=false
+      run: msbuild /m /p:Configuration=Release /p:PlatformToolset=v141_xp ${{env.SOLUTION_FILE_PATH}} /p:PostBuildEventUseInBuild=false
 
     - name: Build Debug
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild /m /p:Configuration=Debug /p:PlatformToolset=vc141_xp ${{env.SOLUTION_FILE_PATH}} /p:PostBuildEventUseInBuild=false
+      run: msbuild /m /p:Configuration=Debug /p:PlatformToolset=v141_xp ${{env.SOLUTION_FILE_PATH}} /p:PostBuildEventUseInBuild=false
 
     - name: Generate Timestamp
       run: |
