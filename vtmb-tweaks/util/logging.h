@@ -20,7 +20,7 @@ public:
 	{
 		if (!LOG.is_open())
 		{
-			LOG.open(filePath, std::ios::out | std::ios::app);
+			LOG.open(filePath);
 		}
 	}
 
