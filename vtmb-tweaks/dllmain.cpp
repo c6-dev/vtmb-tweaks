@@ -15,7 +15,7 @@
 UInt32 vampire_base = 0;
 UInt32 client_base = 0;
 CSimpleIniA ini;
-std::ofstream Log::LOG("vtmb-tweaks.log");
+std::ofstream Log::LOG;
 float tweaks_version = 0.95f;
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
@@ -25,6 +25,8 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 		DisableThreadLibraryCalls(hModule);
 		ini.SetUnicode();
 		ini.LoadFile("Bin\\loader\\vtmb-tweaks.ini");
+		bool bLogging = ini.GetBoolValue("MAIN", "bLogging");
+		if (bLogging) Log::Open("vtmb-tweaks.log");
 		Log() << "Loading vtmb-tweaks, version: " << tweaks_version;
 	}
 

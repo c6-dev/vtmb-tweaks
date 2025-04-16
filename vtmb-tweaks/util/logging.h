@@ -15,6 +15,15 @@ public:
 		}
 	}
 
+	
+	static void Open(const std::string& filePath)
+	{
+		if (!LOG.is_open())
+		{
+			LOG.open(filePath, std::ios::out | std::ios::app);
+		}
+	}
+
 	template <typename T>
 	Log& operator<<(const T& t)
 	{
