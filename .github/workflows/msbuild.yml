@@ -7,7 +7,7 @@ on:
 env:
   SOLUTION_FILE_PATH: vtmb-tweaks.sln
 
-permissions: write-all
+permissions: write-all 
 
 jobs:
   build:
