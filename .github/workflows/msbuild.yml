@@ -1,0 +1,99 @@
+name: MSBuild
+
+on:
+  push:
+    branches: [ "master" ]
+
+env:
+  SOLUTION_FILE_PATH: vtmb-tweaks.sln
+
+permissions: write-all 
+
+jobs:
+  build:
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install WinXP Toolset
+      shell: powershell
+      run: |
+        Set-Location "C:\Program Files (x86)\Microsoft Visual Studio\Installer\"
+        Start-Process -FilePath vs_installer.exe -ArgumentList "modify", "--installPath", "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise", "--add Microsoft.VisualStudio.Component.WinXP", "--quiet", "--norestart", "--nocache" -Wait -PassThru -WindowStyle Hidden
+
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Build Release
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: msbuild /m /p:Configuration=Release /p:PlatformToolset=v141_xp ${{env.SOLUTION_FILE_PATH}} /p:PostBuildEventUseInBuild=false
+
+    - name: Build Debug
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: msbuild /m /p:Configuration=Debug /p:PlatformToolset=v141_xp ${{env.SOLUTION_FILE_PATH}} /p:PostBuildEventUseInBuild=false
+
+    - name: Generate Timestamp
+      run: |
+        timestamp=$(date +"%Y%m%d%H%M%S")
+        echo "artifact_timestamp=$timestamp" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Package Artifacts
+      run: |
+        mkdir -p artifacts
+        Compress-Archive -Path Release\vtmb-tweaks.vtm -DestinationPath artifacts\VTMBTweaks-Release-${{ env.artifact_timestamp }}.zip
+        Compress-Archive -Path Debug\vtmb-tweaks.vtm -DestinationPath artifacts\VTMBTweaks-Debug-${{ env.artifact_timestamp }}.zip
+      shell: pwsh
+
+    - name: Publish Zipped Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: Zipped-Artifacts-${{ env.artifact_timestamp }}
+        path: artifacts/
+
+    - name: Get Release
+      id: get_release
+      uses: cardinalby/git-get-release-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag: 'continuous'
+        doNotFailIfNotFound: true
+    - name: Delete old release if exists
+      if: steps.get_release.outputs.id != ''
+      uses: dev-drprasad/delete-tag-and-release@v1.0
+      with:
+        tag_name: continuous
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        delete_release: true
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: continuous
+        release_name: "Continuous release"
+        draft: false
+        prerelease: true
+        body: |
+          Continuous release generated from the latest push to the repo. Use a regular release unless troubleshooting issues or testing new functionality.
+    - name: Upload Artifact (Release)
+      uses: actions/upload-release-asset@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: artifacts/VTMBTweaks-Release-${{ env.artifact_timestamp }}.zip
+        asset_name: VTMBTweaks-Release-${{ env.artifact_timestamp }}.zip
+        asset_content_type: application/zip
+    - name: Upload Artifact (Debug)
+      uses: actions/upload-release-asset@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: artifacts/VTMBTweaks-Debug-${{ env.artifact_timestamp }}.zip
+        asset_name: VTMBTweaks-Debug-${{ env.artifact_timestamp }}.zip
+        asset_content_type: application/zip
