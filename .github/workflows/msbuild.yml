@@ -20,13 +20,13 @@ jobs:
       shell: cmd
       run: |
         attrib "C:\Program Files (x86)\Microsoft Visual Studio\Installer\setup.exe"
-        "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe" modify --add "Microsoft.VisualStudio.Component.WinXP" --installpath="C:\Program Files\Microsoft Visual Studio\2017\Enterprise" --quiet --norestart --nocache
+        "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe" modify --add "Microsoft.VisualStudio.Component.WinXP" --installpath="C:\Program Files\Microsoft Visual Studio\2019\Enterprise" --quiet --norestart --nocache
          dir C:\ProgramData\Microsoft\VisualStudio\Packages
          
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
       with:
-        vs-version: '15.0'  # Visual Studio 2017
+        vs-version: '16.0'  # Visual Studio 2017
 
     - name: Build Release
       working-directory: ${{env.GITHUB_WORKSPACE}}
