@@ -34,10 +34,15 @@ namespace
 			DONE :
 			mov eax, engine_base
 			add eax, 0xD63510
-			mov eax, dword ptr ds : [eax]
+			mov eax, dword ptr ds:[eax]
 			test eax, eax
+			jne DONE2
 			mov ecx, engine_base
-			add ecx, 0xA38F5
+			add ecx, 0xA38F7
+			jmp ecx
+			DONE2:
+			mov ecx, engine_base
+			add ecx, 0xA391F
 			jmp ecx
 
 		}
