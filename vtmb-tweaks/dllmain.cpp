@@ -4,6 +4,7 @@
 #include "alt_f4_support.h"
 #include "types.h"
 #include "door_helper.h" 
+#include "fov_reset_fix.h"
 #include "no_corpse_despawn.h"
 #include "no_tracers.h"
 #include "non_solid_ragdolls.h"
@@ -59,6 +60,8 @@ extern "C" __declspec(dllexport) void loaded_vampire()
 		door_helper::bFixDoorsAtHighFPS = ini.GetBoolValue("MAIN", "bFixDoorsAtHighFPS");
 		door_helper::bNoDoorAutoclose = ini.GetBoolValue("MAIN", "bNoDoorAutoClose");
 		door_helper::InitVampireHooks();
+
+		fov_reset_fix::InitVampireHooks();
 
 		Log() << "vampire.dll patches loaded.";
 	}

@@ -26,6 +26,9 @@
     <ClCompile Include="modules\alt_f4_support.cpp">
       <Filter>modules</Filter>
     </ClCompile>
+    <ClCompile Include="modules\fov_reset_fix.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="util">
@@ -76,6 +79,9 @@
       <Filter>util</Filter>
     </ClInclude>
     <ClInclude Include="modules\alt_f4_support.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\fov_reset_fix.h">
       <Filter>modules</Filter>
     </ClInclude>
   </ItemGroup>

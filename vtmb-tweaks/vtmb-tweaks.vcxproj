@@ -104,6 +104,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="modules\alt_f4_support.cpp" />
     <ClCompile Include="modules\door_helper.cpp" />
+    <ClCompile Include="modules\fov_reset_fix.cpp" />
     <ClCompile Include="modules\non_solid_ragdolls.cpp" />
     <ClCompile Include="modules\no_corpse_despawn.cpp" />
     <ClCompile Include="modules\no_tracers.cpp" />
@@ -115,6 +116,7 @@
     <ClInclude Include="defs\defs.h" />
     <ClInclude Include="modules\alt_f4_support.h" />
     <ClInclude Include="modules\door_helper.h" />
+    <ClInclude Include="modules\fov_reset_fix.h" />
     <ClInclude Include="modules\non_solid_ragdolls.h" />
     <ClInclude Include="modules\no_corpse_despawn.h" />
     <ClInclude Include="modules\no_tracers.h" />
