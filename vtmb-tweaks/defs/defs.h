@@ -681,7 +681,7 @@ public:
 	UInt8 gap_120[68];
 	float m_flSpeed;
 	UInt8 gap_168[20];
-	float fMoveDoneTime;
+	float m_flNextThink;
 	UInt8 gap_180[16];
 	Vector m_vecMoveDir;
 	UInt8 gap_19C[80];

@@ -6,12 +6,10 @@
 extern UInt32 vampire_base;
 
 namespace {
-	bool droppedActive = false;
 
 	bool __fastcall ShouldDropActive(CBaseCombatWeapon* weapon)
 	{
-		droppedActive = (!weapon->IsStackable() || weapon->stackCount <= 1);
-		return droppedActive;
+		return (!weapon->IsStackable() || weapon->stackCount <= 1);
 	}
 
 	__declspec(naked) void DropStackableActiveWeaponHook()
@@ -37,9 +35,9 @@ namespace {
 
 	bool __fastcall SwitchToNextBestWeaponHook(void* player, void* edx, void* weapon)
 	{
-		if (droppedActive)
+		UInt32 hActiveWeapon = ThisCall<UInt32>(vampire_base + 0x7E19, player);
+		if (hActiveWeapon == NULL) 
 		{
-			droppedActive = false;
 			return ThisCall<bool>(vampire_base + 0x138D6, player, 0);
 		}
 		return true;
