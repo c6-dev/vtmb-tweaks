@@ -16,14 +16,21 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install WinXP Toolset
-      shell: powershell
+    - name: Install C++ and WinXP Toolset
+      shell: pwsh
       run: |
-        Set-Location "C:\Program Files (x86)\Microsoft Visual Studio\Installer"
-        $InstallPath = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise"
-        $WorkLoads = '--add Microsoft.VisualStudio.Component.WinXP'
-        $Arguments = ('/c', "vs_installer.exe", 'modify', '--installPath', "`"$InstallPath`"", $WorkLoads, '--norestart', '--nocache')
-        $process = Start-Process -FilePath cmd.exe -ArgumentList $Arguments -Wait -PassThru -WindowStyle Hidden
+        $InstallerPath = "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe"
+        $InstallPath   = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise"
+        $Arguments     = @(
+          'modify'
+          '--installPath', $InstallPath
+          '--add', 'Microsoft.VisualStudio.Workload.NativeDesktop'
+          '--add', 'Microsoft.VisualStudio.Component.WinXP'
+          '--quiet'
+          '--norestart'
+          '--nocache'
+        )
+        & $InstallerPath $Arguments
 
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.3
