@@ -15,15 +15,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Install WinXP Toolset
       shell: powershell
       run: |
-        Set-Location "C:\Program Files (x86)\Microsoft Visual Studio\Installer\"
-        Start-Process -FilePath vs_installer.exe -ArgumentList "modify", "--installPath", "C:\Program Files (x86)\Microsoft Visual Studio\2022\Enterprise", "--add Microsoft.VisualStudio.Component.WinXP", "--quiet", "--norestart", "--nocache" -Wait -PassThru -WindowStyle Hidden
+        $vsInstallerPath = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vs_installer.exe"
+        $vsPath = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2022\Enterprise"
+        & $vsInstallerPath modify --installPath "$vsPath" --add Microsoft.VisualStudio.Component.WinXP --quiet --norestart --nocache
 
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.1
+      uses: microsoft/setup-msbuild@v1.3
 
     - name: Build Release
       working-directory: ${{env.GITHUB_WORKSPACE}}
