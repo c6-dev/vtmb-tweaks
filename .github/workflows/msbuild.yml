@@ -19,9 +19,11 @@ jobs:
     - name: Install WinXP Toolset
       shell: powershell
       run: |
-        $vsInstallerPath = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vs_installer.exe"
-        $vsPath = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2022\Enterprise"
-        & $vsInstallerPath modify --installPath "$vsPath" --add Microsoft.VisualStudio.Component.WinXP --quiet --norestart --nocache
+        Set-Location "C:\Program Files (x86)\Microsoft Visual Studio\Installer"
+        $InstallPath = "C:\Program Files\Microsoft Visual Studio\2022"
+        $WorkLoads = '--add Microsoft.VisualStudio.Component.WinXP'
+        $Arguments = ('/c', "vs_installer.exe", 'modify', '--installPath', "`"$InstallPath`"", $WorkLoads, '--quiet', '--norestart', '--nocache')
+        $process = Start-Process -FilePath cmd.exe -ArgumentList $Arguments -Wait -PassThru -WindowStyle Hidden
 
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.3
